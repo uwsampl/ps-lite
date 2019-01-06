@@ -22,7 +22,7 @@ void RunWorker()
     return;
   KVWorker<float> kv(0, 0);
 
-  int keySize = 65536;
+  int keySize = 262144;
   std::vector<Key> keys(num);
   std::vector<float> vals(keySize);
   std::vector<int> lens(1, keySize);
