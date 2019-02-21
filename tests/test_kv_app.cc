@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
     if (argc > 2) { chunkStr = argv[2];
       chunk = atoi(chunkStr.c_str());
     }
-    printf("num = %d, chunk = %d. size = %d\n", num, chunk, num * chunk * 4 / 1024 / 1024);
+    print("num = %d, chunk = %d. size = %d\n", num, chunk, num * chunk * 4 / 1024 / 1024);
   // start system
   Start(0);
   // setup server nodes
