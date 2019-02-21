@@ -1,4 +1,5 @@
 #include "ps/ps.h"
+#include "ps/internal/postoffice.h"
 #include <math.h>
 #include <vector>
 #include <chrono>
@@ -94,6 +95,8 @@ int main(int argc, char *argv[])
   Start(0);
   // setup server nodes
   StartServer();
+  //force a barrier for init?
+  ps::Postoffice::Get()->Barrier(0, 7);
   // run worker nodes
   RunWorker();
   // stop system
