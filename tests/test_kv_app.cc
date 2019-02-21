@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
       num = atoi(str.c_str());
     }
     std::string chunkStr = "65536";
-    if (argc > 2) { chunkStr = argv[1];
+    if (argc > 2) { chunkStr = argv[2];
       chunk = atoi(chunkStr.c_str());
     }
   // start system
