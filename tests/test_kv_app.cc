@@ -4,8 +4,7 @@
 #include <chrono>
 
 using namespace ps;
-//number of floats
-int num = 400;
+int num = 1;
 void StartServer()
 {
   if (!IsServer())
@@ -23,10 +22,10 @@ void RunWorker()
     return;
   KVWorker<float> kv(0, 0);
 
-  //int keySize = chunk;
+  int keySize = 16;
   std::vector<Key> keys(num);
-  std::vector<float> vals(num);
-  //std::vector<int> lens(1, keySize);
+  std::vector<float> vals(keySize);
+  std::vector<int> lens(1, keySize);
 
   int rank = MyRank();
   srand(rank + 7);
@@ -54,9 +53,9 @@ void RunWorker()
     uint64_t ms = std::chrono::duration_cast<std::chrono::microseconds>(
                       std::chrono::system_clock::now().time_since_epoch())
                       .count();
-    //for (int k = 0; k < num; k++)
+    for (int k = 0; k < num; k++)
     {
-      ts.push_back(kv.Push(keys,vals));
+      ts.push_back(kv.Push(std::vector<ps::Key>(1, keys[k]), vals, lens));
     }
     for (int t : ts)
       kv.Wait(t);
@@ -64,7 +63,7 @@ void RunWorker()
     // pull
     for (int k = 0; k < num; k++)
     {
-      recvTs.push_back(kv.Pull(keys, &retVals));
+      recvTs.push_back(kv.Pull(std::vector<Key>(1, keys[k]), &retVals));
     }
 
     for (int t : recvTs)
