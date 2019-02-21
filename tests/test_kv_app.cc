@@ -79,6 +79,7 @@ void RunWorker()
 
   std::sort(times.begin(), times.end());
   printf("median: %d(us)\r\n", times[times.size() / 2]);
+  fflush(stdout);
 }
 
 int main(int argc, char *argv[])
