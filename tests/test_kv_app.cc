@@ -4,8 +4,8 @@
 #include <chrono>
 
 using namespace ps;
-int num = 400;
-int chunk = 65536;
+int num = 1;
+int chunk = 16;
 void StartServer()
 {
   if (!IsServer())
