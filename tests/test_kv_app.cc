@@ -5,6 +5,7 @@
 
 using namespace ps;
 int num = 400;
+int chunk = 65536;
 void StartServer()
 {
   if (!IsServer())
@@ -22,7 +23,7 @@ void RunWorker()
     return;
   KVWorker<float> kv(0, 0);
 
-  int keySize = 65536;
+  int keySize = chunk;
   std::vector<Key> keys(num);
   std::vector<float> vals(keySize);
   std::vector<int> lens(1, keySize);
@@ -84,6 +85,10 @@ int main(int argc, char *argv[])
   std::string str = "400";
     if (argc > 1) { str = argv[1];
       num = atoi(str.c_str());
+    }
+    std::string chunkStr = "65536";
+    if (argc > 2) { chunkStr = argv[1];
+      chunk = atoi(chunkStr.c_str());
     }
   // start system
   Start(0);
