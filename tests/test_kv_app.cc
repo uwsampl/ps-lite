@@ -39,7 +39,7 @@ void RunWorker()
 
   // push
 
-  int repeat = 50;
+  int repeat = 10;
   std::vector<int> ts;
   std::vector<uint64_t> times;
 
@@ -49,7 +49,7 @@ void RunWorker()
   std::vector<float> retVals;
   for (int i = 0; i < repeat; ++i)
   {
-    LOG(INFO) << "[" << i << "] iteration = " << i;
+    //LOG(INFO) << "[" << i << "] iteration = " << i;
     ts.clear();
     recvTs.clear();
     uint64_t ms = std::chrono::duration_cast<std::chrono::microseconds>(
