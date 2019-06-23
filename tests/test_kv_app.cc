@@ -99,7 +99,6 @@ int main(int argc, char *argv[])
     if (argc > 2) { chunkStr = argv[2];
       chunk = atoi(chunkStr.c_str());
     }
-    std::string iter = "50";
     if(argc > 3)
       {
 	iter = atoi(argv[3]);
