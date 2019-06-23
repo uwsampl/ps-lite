@@ -7,6 +7,7 @@
 using namespace ps;
 int num = 1;
 int chunk = 16;
+int iter=50;
 void StartServer()
 {
   if (!IsServer())
@@ -78,7 +79,13 @@ void RunWorker()
   }
 
   std::sort(times.begin(), times.end());
-  printf("median: %d(us)\r\n", times[times.size() / 2]);
+  int avg = 0;
+  for(auto item : times)
+    {
+      avg += item;
+    }
+  avg /= iter;
+  printf("iter: %d, median: %d(us)\r. avg = %d(us)\n", iter, times[times.size() / 2], avg);
   fflush(stdout);
 }
 
@@ -92,6 +99,11 @@ int main(int argc, char *argv[])
     if (argc > 2) { chunkStr = argv[2];
       chunk = atoi(chunkStr.c_str());
     }
+    std::string iter = "50";
+    if(argc > 3)
+      {
+	iter = atoi(argv[3]);
+      }
   // start system
   Start(0);
   // setup server nodes
