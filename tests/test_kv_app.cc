@@ -40,7 +40,7 @@ void RunWorker()
 
   // push
 
-  int repeat = 10;
+  int repeat = iter;
   std::vector<int> ts;
   std::vector<uint64_t> times;
 
