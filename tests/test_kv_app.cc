@@ -1,4 +1,5 @@
-#include "ps/ps.h"
+
+0;136;0c#include "ps/ps.h"
 #include "ps/internal/postoffice.h"
 #include <math.h>
 #include <vector>
@@ -85,7 +86,7 @@ void RunWorker()
       avg += item;
     }
   avg /= iter;
-  printf("iter: %d, median: %d(us)\r. avg = %d(us)\n", iter, times[times.size() / 2], avg);
+  printf("iter: %d, median: %d(us). avg = %d(us)\n", iter, times[times.size() / 2], avg);
   fflush(stdout);
 }
 
